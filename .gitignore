@@ -3,6 +3,7 @@ _build/
 *.o
 *.so
 *.a
+*.db
 *.py[cod]
 *.egg-info
 dist/
