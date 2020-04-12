@@ -18,12 +18,15 @@ def take_readings():
 
 
 def run(interval):
+    print("Starting...")
     db.create_table()
 
     while True:
         data = take_readings()
         db.insert_readings(data["temperature"], data["pressure"],
                            data["humidity"], data["pm25"])
+        print("Reading stored in database:")
+        print(data)
         time.sleep(interval)
 
 
