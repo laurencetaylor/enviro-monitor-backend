@@ -1,5 +1,6 @@
 import flask
 import db
+import json
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -11,13 +12,15 @@ def to_obj(entry):
 
 def readings_get():
     data = db.get_readings()
-    transformed_data = list(map(to_obj, data))
-    return flask.jsonify(transformed_data)
+    return list(map(to_obj, data))
 
 
 @app.route('/readings', methods=['GET'])
 def home():
-    return readings_get()
+    try: 
+        return json.dumps(readings_get()), 200, {'ContentType': 'application/json'}
+    except:
+        return json.dumps({'status': 500, 'error': 'Internal Error'}), 500, {'ContentType': 'application/json'}
 
 
 app.run()
