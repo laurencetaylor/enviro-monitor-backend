@@ -22,18 +22,13 @@ def insert_readings(temperature, pressure, humidity, pm25):
     cursor = conn.cursor()
     with conn:
         datetime_string = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        cursor.execute(f"""
-        INSERT INTO enviro_data(datetime, temperature, pressure, humidity, pm25) VALUES (
-            '{datetime_string}', {temperature}, {pressure}, {humidity}, {pm25}
-        )
-        """)
+        cursor.execute("INSERT INTO enviro_data(datetime, temperature, pressure, humidity, pm25) VALUES ('%s', %s, %s, %s, %s)" % (
+            datetime_string, temperature, pressure, humidity, pm25))
 
 
 def get_readings(limit=100):
     conn = sqlite3.connect('enviro_data.db')
     cursor = conn.cursor()
     with conn:
-        cursor.execute(f"""
-        SELECT * FROM enviro_data LIMIT {limit}
-        """)
+        cursor.execute('SELECT * FROM enviro_data ORDER BY id DESC LIMIT %s' % (limit))
         return cursor.fetchall()

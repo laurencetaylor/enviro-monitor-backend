@@ -27,7 +27,6 @@ fonts==0.0.3
 fourletterphat==0.1.0
 funcsigs==1.0.2
 gpiozero==1.5.1
-gyp==0.1
 i2cdevice==0.0.6
 idna==2.6
 ipaddress==1.0.17
@@ -66,7 +65,7 @@ PyJWT==1.7.0
 pyOpenSSL==19.0.0
 pyserial==3.4
 pytz==2019.3
-pyxdg==0.26
+pyxdg==0.25
 rainbowhat==0.1.0
 requests==2.21.0
 requests-oauthlib==1.0.0
@@ -87,5 +86,5 @@ ST7735==0.0.3
 touchphat==0.0.1
 twython==3.7.0
 unicornhathd==0.0.4
-urllib3==1.24.2
-Werkzeug==0.15.3
+urllib3==1.24.1
+Werkzeug==0.14.1
