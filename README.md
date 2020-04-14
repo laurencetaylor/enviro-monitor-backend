@@ -2,13 +2,21 @@
 
 ## How to Run
 
-- Clone this repository
-- Install requirements with `pip install -r requirements.txt`
-- Install the enviroplus library by running `./install.sh`
-- Install pm2 globally `npm i -g pm2`
-- Start the api and sensor with `pm2 start src/api.py`, `pm2 start src/sensor.py`
-- Install nginx, create file /etc/nginx/sites-available
-- Paste the following code in
+Required hardware:
+- Raspberry Pi
+- Enviro+ environment sensor
+- PMS5003 particulate matter sensor
+
+These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly
+
+1. Clone this repository
+2. Install dependencies with `pip install -r requirements.txt`
+3. Install the enviroplus library by running `./install.sh`
+4. We will use pm2 to run our app. Install it globally with `npm i -g pm2` (ensure you have node downloaded first)
+5. Start the api and sensor with `pm2 start src/api.py` and `pm2 start src/sensor.py`
+6. Run `pm2 startup systemd` then run the generated command followed by `pm2 save`. This will start the app on every raspberry pi boot
+7. We will use nginx as a reverse proxy. Install it by running `sudo apt update` followed by `sudo apt install nginx`
+8. Replace the contents of /etc/nginx/sites-available with the following code:
 ````
 server {
 	listen 80 default_server;
@@ -30,5 +38,5 @@ server {
 	}
 }
 ````
-- Start nginx with `sudo systemctl start nginx`
-- Find out raspberry pi url with `arp -a`, given correct configuration visit the `<url>/readings` endpoint for data
+8. Start nginx with `sudo systemctl start nginx`, or if it already running `sudo systemctl restart nginx`
+9. Find out your Raspberry Pi's url with `arp -a` (do not run this on your pi), visit the `/readings` endpoint to view your data
