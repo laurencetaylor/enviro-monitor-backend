@@ -30,4 +30,4 @@ def run(interval):
         time.sleep(interval)
 
 
-run(300)
+run(600)

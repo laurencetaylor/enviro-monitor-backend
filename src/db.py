@@ -26,9 +26,12 @@ def insert_readings(temperature, pressure, humidity, pm25):
             datetime_string, temperature, pressure, humidity, pm25))
 
 
-def get_readings(limit=100):
+def get_readings(limit):
     conn = sqlite3.connect('enviro_data.db')
     cursor = conn.cursor()
     with conn:
-        cursor.execute('SELECT * FROM enviro_data ORDER BY id DESC LIMIT %s' % (limit))
+        if limit:
+            cursor.execute('SELECT * FROM enviro_data ORDER BY id DESC LIMIT %s' % (limit))
+        else:
+            cursor.execute('SELECT * FROM enviro_data ORDER BY id DESC')
         return cursor.fetchall()
