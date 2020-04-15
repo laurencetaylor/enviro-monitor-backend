@@ -12,18 +12,18 @@ def to_obj(entry):
 
 
 def readings_get(limit):
-    data = db.get_readings(limit)
-    return list(map(to_obj, data))
+    try:
+        data = db.get_readings(limit)
+        result = list(map(to_obj, data))
+        return json.dumps(result), 200, {'ContentType': 'application/json'}
+    except:
+        return json.dumps({'status': 500, 'title': 'Internal Error', 'message': 'Problem accessing the database'}), 500, {'ContentType': 'application/json'}
 
 
 @app.route('/readings', methods=['GET'])
 def home():
     limit = request.args.get('limit')
-
-    try:
-        return json.dumps(readings_get(limit)), 200, {'ContentType': 'application/json'}
-    except:
-        return json.dumps({'status': 500, 'error': 'Internal Error'}), 500, {'ContentType': 'application/json'}
+    return readings_get(limit)
 
 
 app.run()
