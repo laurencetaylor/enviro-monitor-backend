@@ -57,6 +57,8 @@ Responses follow the [JSON:API](https://jsonapi.org/) spec, for example:
 ````
 [
   {
+    "id": 154,
+    "type": "readings",
     "data": {
       "attributes": {
         "date": "2020-04-16 21:25:11",
@@ -64,9 +66,7 @@ Responses follow the [JSON:API](https://jsonapi.org/) spec, for example:
         "temperature": 21.44291390865692,
         "pm25": 6,
         "humidity": 56.04009747852809
-      },
-      "type": "readings",
-      "id": 154
+      }
     }
   }
 ]
