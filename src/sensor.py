@@ -30,4 +30,5 @@ def run(interval):
         time.sleep(interval)
 
 
+# Change this argument to alter the frequency of readings
 run(600)

@@ -9,7 +9,7 @@ Required hardware:
 - Enviro+ environment sensor
 - PMS5003 particulate matter sensor
 
-These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly.
+These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly. Note: I am not a Python developer 🙂
 
 1. Clone this repository
 2. Install dependencies with `pip install -r requirements.txt`
@@ -42,3 +42,16 @@ server {
 ````
 8. Start nginx with `sudo systemctl start nginx`, or if already running `sudo systemctl restart nginx`
 9. Visit your Raspberry Pi's IP address at the `/readings` endpoint to view your data. Set a `limit` query string to pull a certain number of readings from the database. To find your devices IP address you could use `arp -a` or similar
+
+## API Schema
+
+Just one endpoint:
+`/readings`
+
+Use the limit query string to pull a certain number of entries
+`/readings?limit=100`
+
+## ToDo
+
+- Tests if necessary
+- Enable filtering by daterange

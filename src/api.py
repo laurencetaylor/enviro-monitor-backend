@@ -11,7 +11,7 @@ def to_obj(entry):
     return {'data': {'type': 'readings', 'id': entry[0], 'attributes': {'date': entry[1], 'temperature': entry[2], 'pressure': entry[3], 'humidity': entry[4], 'pm25': entry[5]}}}
 
 
-def readings_get(limit):
+def get_readings(limit):
     try:
         data = db.get_readings(limit)
         result = list(map(to_obj, data))
@@ -23,7 +23,7 @@ def readings_get(limit):
 @app.route('/readings', methods=['GET'])
 def home():
     limit = request.args.get('limit')
-    return readings_get(limit)
+    return get_readings(limit)
 
 
 app.run()
