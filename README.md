@@ -1,6 +1,11 @@
 # Enviroplus Sensor Backend
 
-A very simple API to expose data collected with Enviro+ and PMS5003 sensors.
+A very simple app which continuously collects and exposes [Enviro](https://shop.pimoroni.com/products/enviro?variant=31155658457171) and [PMS5003](https://shop.pimoroni.com/products/pms5003-particulate-matter-sensor-with-cable) data from the moment you boot your Raspberry Pi
+
+- [Initial Setup](https://github.com/LaurenceTaylor/enviro-monitor-backend#initial-setup)
+- [API Schema](https://github.com/LaurenceTaylor/enviro-monitor-backend#api-schema)
+
+Note: I am not a Python developer 🙂
 
 ## Initial Setup
 
@@ -9,7 +14,7 @@ Required hardware:
 - Enviro+ environment sensor
 - PMS5003 particulate matter sensor
 
-These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly. Note: I am not a Python developer 🙂
+These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly
 
 Readings are taken every 10 minutes by default, determined by the argument for the `run` function in `src/sensor.py`.
 
@@ -47,13 +52,18 @@ server {
 
 ## API Schema
 
-Just one endpoint, which will return all readings:
-`/readings`
+### GET
+#### /readings
+Returns all readings. An optional querystring can be passed containing any or all of `dateFrom`, `dateTo`, and `limit` parameters
 
-Use the limit query string to pull a certain number of entries
-`/readings?limit=100`
+*Example query*
+`/readings?dateFrom=2020-04-16&dateTo=2020-04-20&limit=100`
 
-Responses follow the [JSON:API](https://jsonapi.org/) spec, for example:
+*Example Response*
+
+Responses follow the [JSON:API](https://jsonapi.org/) spec
+View the [Pimoroni docs](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-plus) to learn more about what these readings mean
+
 ````
 [
   {
@@ -71,9 +81,7 @@ Responses follow the [JSON:API](https://jsonapi.org/) spec, for example:
   }
 ]
 ````
-View the [Pimoroni docs](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-plus) to learn more about these readings
 
-## ToDo
+## Todo
 
-- Tests if necessary
-- Enable filtering by daterange
+- Add tests
