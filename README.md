@@ -1,10 +1,8 @@
 # Enviroplus Sensor Backend
 
-A very simple app which continuously collects and exposes [Enviro](https://shop.pimoroni.com/products/enviro?variant=31155658457171) and [PMS5003](https://shop.pimoroni.com/products/pms5003-particulate-matter-sensor-with-cable) data from the moment you boot your Raspberry Pi
+A very simple app which continuously collects and exposes [Enviro](https://shop.pimoroni.com/products/enviro?variant=31155658457171) and [PMS5003](https://shop.pimoroni.com/products/pms5003-particulate-matter-sensor-with-cable) data from the moment you boot your Raspberry Pi.
 
-[Initial Setup](https://github.com/LaurenceTaylor/enviro-monitor-backend#initial-setup)
-[API Schema](https://github.com/LaurenceTaylor/enviro-monitor-backend#api-schema)
-[Todo](https://github.com/LaurenceTaylor/enviro-monitor-backend#todo)
+[Initial Setup](https://github.com/LaurenceTaylor/enviro-monitor-backend#initial-setup) | [API Schema](https://github.com/LaurenceTaylor/enviro-monitor-backend#api-schema) | [Todo](https://github.com/LaurenceTaylor/enviro-monitor-backend#todo)
 
 Note: I am not a Python developer 🙂
 
@@ -15,7 +13,7 @@ Required hardware:
 - Enviro+ environment sensor
 - PMS5003 particulate matter sensor
 
-These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly
+These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly.
 
 Readings are taken every 10 minutes by default, determined by the argument for the `run` function in `src/sensor.py`.
 
@@ -54,14 +52,14 @@ server {
 ## API Schema
 
 ### GET /readings
-Returns all readings. An optional querystring can be passed containing any or all of `dateFrom`, `dateTo`, and `limit` parameters
+Returns all readings. An optional querystring can be passed containing any or all of `dateFrom`, `dateTo`, and `limit` parameters.
 
 #### Example query
 `/readings?dateFrom=2020-04-16&dateTo=2020-04-20&limit=100`
 
 #### Example Response
-Responses follow the [JSON:API](https://jsonapi.org/) spec
-View the [Pimoroni docs](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-plus) to learn more about what these readings mean
+Responses follow the [JSON:API](https://jsonapi.org/) spec.
+View the [Pimoroni docs](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-plus) to learn more about what these readings mean.
 
 ````
 [
