@@ -11,6 +11,8 @@ Required hardware:
 
 These instructions are to be run on your Raspberry Pi provided the above hardware is configured correctly. Note: I am not a Python developer 🙂
 
+Readings are taken every 10 minutes by default, determined by the argument for the `run` function in `src/sensor.py`.
+
 1. Clone this repository
 2. Install dependencies with `pip install -r requirements.txt`
 3. Install the enviroplus library by running `./install.sh`
@@ -45,11 +47,31 @@ server {
 
 ## API Schema
 
-Just one endpoint:
+Just one endpoint, which will return all readings:
 `/readings`
 
 Use the limit query string to pull a certain number of entries
 `/readings?limit=100`
+
+Responses follow the [JSON:API](https://jsonapi.org/) spec, for example:
+````
+[
+  {
+    "id": 154,
+    "type": "readings",
+    "data": {
+      "attributes": {
+        "date": "2020-04-16 21:25:11",
+        "pressure": 639.2067642784692,
+        "temperature": 21.44291390865692,
+        "pm25": 6,
+        "humidity": 56.04009747852809
+      }
+    }
+  }
+]
+````
+View the [Pimoroni docs](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-enviro-plus) to learn more about these readings
 
 ## ToDo
 
