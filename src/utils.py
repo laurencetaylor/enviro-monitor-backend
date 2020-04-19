@@ -6,23 +6,19 @@ def format_response(entry):
 
 
 def validate_date(date):
-    if date is None:
-        return True
     pattern = re.compile(
         '^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|2[0-9]|1[0-9]|0[1-9])+$')
-    return pattern.match(date)
+    return date is None or pattern.match(date)
 
 
 def validate_limit(limit):
-    if limit is None:
-        return True
     pattern = re.compile('^[0-9]*$')
-    return pattern.match(limit)
+    return limit is None or pattern.match(limit)
 
 
 def validate_data(limit, date_from, date_to):
     if not (validate_date(date_from) and validate_date(date_to) and validate_limit(limit)):
-        raise ValueError('Incorrect date format')
+        raise ValueError('Invalid parameters provided')
 
 
 def construct_query(limit, date_from, date_to):

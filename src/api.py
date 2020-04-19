@@ -14,7 +14,7 @@ def get_readings(limit, date_from, date_to):
     try:
         validate_data(limit, date_from, date_to)
     except:
-        return json.dumps({'status': 500, 'title': 'Internal Error', 'message': 'Invalid parameters'}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'status': 400, 'title': 'Bad Request Error', 'message': 'Invalid parameters'}), 400, {'ContentType': 'application/json'}
 
     query = construct_query(limit, date_from, date_to)
 
