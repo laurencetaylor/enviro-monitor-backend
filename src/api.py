@@ -2,7 +2,6 @@ import flask
 from flask import request
 import db
 import json
-from datetime import timedelta
 
 from utils import construct_query, format_response, validate_data
 
