@@ -33,7 +33,7 @@ def construct_query(limit, date_from, date_to):
     elif date_to:
         query += ' WHERE ' + to_query
 
-    query += ' ORDER BY datetime ASC'
+    query += ' ORDER BY datetime DESC'
 
     if limit:
         query += ' LIMIT ' + limit
