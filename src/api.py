@@ -2,11 +2,18 @@ import flask
 from flask import request
 import db
 import json
+from flask_cors import CORS
 
 from utils import construct_query, format_response, validate_data
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
+CORS(app)
+cors = CORS(app, resources={
+    r"/*": {
+        "origins": "*"
+    }
+})
 
 
 def get_readings(limit, date_from, date_to):

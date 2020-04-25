@@ -13,7 +13,7 @@ pms5003 = PMS5003()
 
 
 def take_readings():
-    readings = pms5003.read()
+    readings = pms5003.read()    
     return {"temperature": bme280.get_temperature(), "pressure": bme280.get_pressure(), "humidity": bme280.get_humidity(), "pm25": readings.pm_ug_per_m3(2.5)}
 
 
