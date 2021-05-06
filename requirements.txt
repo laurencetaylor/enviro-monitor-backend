@@ -25,7 +25,7 @@ envirophat==1.0.0
 enviroplus==0.0.1
 ExplorerHAT==0.4.2
 Flask==1.0.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 font-roboto==0.0.1
 fonts==0.0.3
 fourletterphat==0.1.0
